@@ -4,22 +4,48 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\Cast\Double;
 
 class Account extends Model
 {
     use HasFactory;
 
-    const CURRENT_ACCOUNT = 'current';
-    const SAVINGS_ACCOUNT = 'savings';
+    const TYPE_CURRENT = "current";
+    const TYPE_SAVINGS = "savings";
+    const STATUS_APPROVED = "approved";
+    const STATUS_PENDING = "pending";
+    const STATUS_BLOCKED = "blocked";
 
     protected $fillable = [
         'type',
         'account_number',
-        'balance'
+        'balance',
+        'status',
+        'user_id'
     ];
 
-    // strtoupper(bin2hex(random_bytes(5)))
+    public function addBalance(float $amount): ?bool
+    {
+        $balance = $this->getAttribute('balance');
+        $newBalance = $balance + $amount;
+        $this->setAttribute('balance', $newBalance);
+        return true;
+    }
 
+    public function reduceBalance(float $amount): ?bool
+    {
+        $balance = $this->getAttribute('balance');
+        if ($balance < $amount)
+            return false;
+        $newBalance = $balance - $amount;
+        $this->setAttribute('balance', $newBalance);
+        return true;
+    }
+
+    public function getBalance(): ?float
+    {
+        return $this->getAttribute('balance');
+    }
 
     public function user()
     {

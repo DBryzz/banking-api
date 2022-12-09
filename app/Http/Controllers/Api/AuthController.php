@@ -11,10 +11,15 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth:api', ['except' => ['login', 'register']]);
-    // }
+    /* public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth.apikey');
+    } */
 
     public function login(Request $request)
     {
@@ -40,14 +45,14 @@ class AuthController extends Controller
         $token = Auth::attempt($credentials);
         if (!$token) {
             return response()->json([
-                'status' => 'error',
+                'success' => false,
                 'message' => 'Unauthorized',
             ], 401);
         }
 
         $user = Auth::user();
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'user' => $user,
             'authorisation' => [
                 'token' => $token,
@@ -71,7 +76,7 @@ class AuthController extends Controller
         // dd($validateUser);
         if ($validateUser->fails()) {
             return response()->json([
-                'status' => false,
+                'success' => false,
                 'message' => 'validation error',
                 'errors' => $validateUser->errors()
             ], 401);
@@ -93,7 +98,7 @@ class AuthController extends Controller
 
         $token = Auth::login($user);
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'message' => 'User created successfully',
             'user' => $user,
             'authorisation' => [
@@ -107,7 +112,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'message' => 'Successfully logged out',
         ]);
     }
@@ -115,7 +120,7 @@ class AuthController extends Controller
     public function refresh()
     {
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'user' => Auth::user(),
             'authorisation' => [
                 'token' => Auth::refresh(),

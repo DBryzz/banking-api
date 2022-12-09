@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Account;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,7 +20,8 @@ return new class extends Migration
             $table->string('type');
             $table->string('balance');
             $table->string('account_number')->unique();
-            $table->foreignIdFor(User::class)->nullable();
+            $table->string('status')->default(Account::STATUS_PENDING);
+            $table->foreignIdFor(User::class);
             $table->timestamps();
         });
     }

@@ -125,6 +125,19 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | API Key
+    |--------------------------------------------------------------------------
+    |
+    | This key is used to authorize API request. It will be added to the request header
+    |
+    */
+
+    'api_key' => env('API_KEY'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
@@ -185,6 +198,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Ejarnutowski\LaravelApiKey\Providers\ApiKeyServiceProvider::class,
+
 
         /*
          * Application Service Providers...
