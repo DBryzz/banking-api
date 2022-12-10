@@ -23,14 +23,14 @@ class AccountController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'initial deposite must be atleast xaf 10000'
-            ]);
+            ], 200);
         }
 
         if (!array_key_exists('type', $data) || !in_array($data['type'], $this->accountTypeArray)) {
             return response()->json([
                 'success' => false,
                 'message' => 'account type can either be savings or current'
-            ]);
+            ], 200);
         }
 
         $type = $data['type'];
@@ -73,13 +73,13 @@ class AccountController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'accountId required'
-            ]);
+            ], 200);
         }
         if (!array_key_exists('status', $data) || !in_array($data['status'], $this->accountStatusArray)) {
             return response()->json([
                 'success' => false,
                 'message' => 'account status can either be blocked, pending or approved'
-            ]);
+            ], 200);
         }
 
         $accountId = $data['accountId'];
@@ -116,7 +116,7 @@ class AccountController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'accountId required'
-            ]);
+            ], 200);
         }
         $accountId = $data['accountId'];
 

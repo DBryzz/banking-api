@@ -68,7 +68,7 @@ class TransactionController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => 'toAccountNumber required'
-                ]);
+                ], 200);
             }
 
             $transferMotive = (array_key_exists('transferMotive', $data) && ($data['transferMotive'] != null)) ? $data['transferMotive'] : null;

@@ -10,21 +10,23 @@ components:
       type: http
       scheme: bearer
 paths:
-  /api/register:
+  /api/secure/cachr/register:
     post:
       tags:
         - default
-      summary: 'Admin_Cachier: SignUp'
+      summary: SignUp
       requestBody:
         content:
           application/json:
             schema:
               type: object
               example:
-                name: Domou4 Brice4
-                email: dbryzz.dev+4@gmail.com
-                password: Password1
-                role: ''
+                name: required
+                email: require, Unique
+                password: required, at least 6 characters
+                role: >-
+                  [OPTIONAL] - Only for admin users. Valid value is cachier.
+                  Default customer 
       security:
         - bearerAuth: []
       parameters:
@@ -49,8 +51,8 @@ paths:
             schema:
               type: object
               example:
-                email: dbryzz.dev+2@gmail.com
-                password: Password1
+                email: required
+                password: required
       parameters:
         - name: X-Authorization
           in: header
@@ -62,7 +64,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/logout:
+  /api/secure/cust/logout:
     post:
       tags:
         - default
@@ -82,7 +84,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/refresh:
+  /api/secure/cust/refresh:
     post:
       tags:
         - default
@@ -102,7 +104,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/account/create:
+  /api/secure/cust/account/create:
     post:
       tags:
         - default
@@ -113,8 +115,8 @@ paths:
             schema:
               type: object
               example:
-                type: savings
-                initialDeposit: 38000
+                type: 'required. Valid: [savings, current]'
+                initialDeposit: 10000
       security:
         - bearerAuth: []
       parameters:
@@ -128,19 +130,19 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/account/status-change:
+  /api/secure/admin/account/status-change:
     patch:
       tags:
         - default
-      summary: 'Admin: ChangeAccountStatus'
+      summary: ChangeAccountStatus
       requestBody:
         content:
           application/json:
             schema:
               type: object
               example:
-                accountId: 7
-                status: blocked
+                accountId: 8
+                status: valid values [blocked, pending, approved]
       security:
         - bearerAuth: []
       parameters:
@@ -154,7 +156,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/account/balance/get:
+  /api/secure/cust/account/balance/get:
     get:
       tags:
         - default
@@ -172,11 +174,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/account/{accountId}/balance/get:
+  /api/secure/cachr/account/{accountId}/balance/get:
     get:
       tags:
         - default
-      summary: 'Admin_Cachier: GetAccountBalance'
+      summary: GetAccountBalance
       security:
         - bearerAuth: []
       parameters:
@@ -195,7 +197,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/transaction/initiate:
+  /api/secure/cust/transaction/initiate:
     post:
       tags:
         - default
@@ -206,11 +208,13 @@ paths:
             schema:
               type: object
               example:
-                transactionType: withdrawal
+                transactionType: 'Valid Values: [withdrawal, deposit, transfer]'
                 accountId: 2
                 amount: 5000
-                toAccountNumber: ''
-                transferMotive: ''
+                toAccountNumber: >-
+                  [OPTIONAL] if it is tranfer enter the account_number eg
+                  CUS.13567 to which you wish to send the money
+                transferMotive: '[OPTIONAL] if it is tranfer eg For nothing'
       security:
         - bearerAuth: []
       parameters:
@@ -224,7 +228,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/account/transfers:
+  /api/secure/cust/account/transfers:
     get:
       tags:
         - default
@@ -242,11 +246,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/account/{accountId}/transfers:
+  /api/secure/cachr/account/{accountId}/transfers:
     get:
       tags:
         - default
-      summary: 'Admin_Cachier: GetAccountTransfers'
+      summary: GetAccountTransfers
       security:
         - bearerAuth: []
       parameters:

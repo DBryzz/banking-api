@@ -7,14 +7,14 @@
 	},
 	"item": [
 		{
-			"name": "Admin_Cachier: SignUp",
+			"name": "SignUp",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjAyNTIyLCJleHAiOjE2NzA2MDYxMjIsIm5iZiI6MTY3MDYwMjUyMiwianRpIjoicXNIUVZ2cnhXM3ZOZVJmWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.oCapMm13FwhakFwGkCQVLNQS2RsI8htwoZqW224ZUX4",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjc0ODA4LCJleHAiOjE2NzA2Nzg0MDgsIm5iZiI6MTY3MDY3NDgwOCwianRpIjoiTFZVQjVwRE9Qd0MydDdURCIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.hy3yevBNBxWuY13MHfdor3-NRSMYdRY8UkMg0IJ4iLs",
 							"type": "string"
 						}
 					]
@@ -29,7 +29,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Domou4 Brice4\",\n    \"email\": \"dbryzz.dev+4@gmail.com\",\n    \"password\": \"Password1\",\n    \"role\": \"\"\n}",
+					"raw": "{\n    \"name\": \"required\",\n    \"email\": \"require, Unique\",\n    \"password\": \"required, at least 6 characters\",\n    \"role\": \"[OPTIONAL] - Only for admin users. Valid value is cachier. Default customer \"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,12 +37,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/register",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cachr/register",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cachr",
 						"register"
 					]
 				}
@@ -62,7 +64,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"dbryzz.dev+2@gmail.com\",\n    \"password\": \"Password1\"\n}",
+					"raw": "{\n    \"email\": \"required\",\n    \"password\": \"required\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -90,7 +92,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjAyNTIyLCJleHAiOjE2NzA2MDYxMjIsIm5iZiI6MTY3MDYwMjUyMiwianRpIjoicXNIUVZ2cnhXM3ZOZVJmWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.oCapMm13FwhakFwGkCQVLNQS2RsI8htwoZqW224ZUX4",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3NlY3VyZS9jdXN0L3JlZnJlc2giLCJpYXQiOjE2NzA2NzQxMzIsImV4cCI6MTY3MDY3Nzc1MCwibmJmIjoxNjcwNjc0MTUwLCJqdGkiOiJobXdaQXp6OGRNVEZDR0lUIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.oOUBy1tf5Aw2b8OEKI2meANx7KtbOU_I70cgcnlR5Zk",
 							"type": "string"
 						}
 					]
@@ -104,12 +106,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/logout",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cust/logout",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cust",
 						"logout"
 					]
 				}
@@ -124,7 +128,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjAyNTIyLCJleHAiOjE2NzA2MDYxMjIsIm5iZiI6MTY3MDYwMjUyMiwianRpIjoicXNIUVZ2cnhXM3ZOZVJmWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.oCapMm13FwhakFwGkCQVLNQS2RsI8htwoZqW224ZUX4",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjc0MTMyLCJleHAiOjE2NzA2Nzc3MzIsIm5iZiI6MTY3MDY3NDEzMiwianRpIjoiRlQ1QXhqeDlUUk9Ua2NSeiIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.NPpt_ooFK1F-GLB_nCOdk4cY-4SWO_FhAWzUk_TES5Y",
 							"type": "string"
 						}
 					]
@@ -138,12 +142,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/refresh",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cust/refresh",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cust",
 						"refresh"
 					]
 				}
@@ -158,7 +164,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjAzOTgyLCJleHAiOjE2NzA2MDc1ODIsIm5iZiI6MTY3MDYwMzk4MiwianRpIjoidW5UZVQ5cE1xUktYUVpvRyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.CfOoOh2Vk5JYaxDX3Kljt4pjxN1KnD3AneNIWRvu1WE",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjc0MjMwLCJleHAiOjE2NzA2Nzc4MzAsIm5iZiI6MTY3MDY3NDIzMCwianRpIjoiZWk5RUx5Y2R4Q29TNlRxdCIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.jeW2Snvu6dEG0T2UQLPgGeJkA2C7Kl_ZDGnVRO5Swlw",
 							"type": "string"
 						}
 					]
@@ -173,7 +179,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"type\": \"savings\",\n    \"initialDeposit\": 38000\n}",
+					"raw": "{\n    \"type\": \"required. Valid: [savings, current]\",\n    \"initialDeposit\": 10000\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -181,12 +187,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/account/create",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cust/account/create",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cust",
 						"account",
 						"create"
 					]
@@ -195,14 +203,14 @@
 			"response": []
 		},
 		{
-			"name": "Admin: ChangeAccountStatus",
+			"name": "ChangeAccountStatus",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjAzOTQ5LCJleHAiOjE2NzA2MDc1NDksIm5iZiI6MTY3MDYwMzk0OSwianRpIjoia0VDQnVRQkdUNEdUWTRUTiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.3SBQ0XmL27hu9weKQRtuB2NtkvOBBgXBOTb56ZVjqoo",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjc0MzEwLCJleHAiOjE2NzA2Nzc5MTAsIm5iZiI6MTY3MDY3NDMxMCwianRpIjoic053N052dTUxcG1EN04xMyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.UJINBc66SM3TeyGD0Wu_QgL11WYnZaXyLiGEbMnvlYE",
 							"type": "string"
 						}
 					]
@@ -217,7 +225,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"accountId\": 7,\n    \"status\": \"blocked\"\n}",
+					"raw": "{\n    \"accountId\": 8,\n    \"status\": \"valid values [blocked, pending, approved]\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -225,12 +233,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/account/status-change",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/admin/account/status-change",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"admin",
 						"account",
 						"status-change"
 					]
@@ -249,7 +259,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjA2MTUyLCJleHAiOjE2NzA2MDk3NTIsIm5iZiI6MTY3MDYwNjE1MiwianRpIjoiQ09VR3ZCY3luNXFaZWxMNSIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FDpSVgIvTe5Rg61312dbjV6lh9Mf8ggA8XxMPsidhkc",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjc1NTY5LCJleHAiOjE2NzA2NzkxNjksIm5iZiI6MTY3MDY3NTU2OSwianRpIjoidjVWcVl0SVdmdkZaUUpuZyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.78v7EpTODOww0PSwFbmyaaRW4XFttMZh80yW3DLQ_S0",
 							"type": "string"
 						}
 					]
@@ -272,12 +282,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/account/balance/get",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cust/account/balance/get",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cust",
 						"account",
 						"balance",
 						"get"
@@ -287,7 +299,7 @@
 			"response": []
 		},
 		{
-			"name": "Admin_Cachier: GetAccountBalance",
+			"name": "GetAccountBalance",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -297,7 +309,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjA2NzIxLCJleHAiOjE2NzA2MTAzMjEsIm5iZiI6MTY3MDYwNjcyMSwianRpIjoidFExNnNybnRLUHdJSThrRiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.pCW-9V8Bo3JS8wj88C0aSv_MCubisn8zF4FEl0mmp_o",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjc1NjI3LCJleHAiOjE2NzA2NzkyMjcsIm5iZiI6MTY3MDY3NTYyNywianRpIjoiRk1iOVZ2ZGxRQnV4NDA0dSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.isuJDI_UuWxJ3JikD4ozcuVsB2xJtpi937UrBRjLcL4",
 							"type": "string"
 						}
 					]
@@ -320,12 +332,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/account/{accountId}/balance/get",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cachr/account/{accountId}/balance/get",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cachr",
 						"account",
 						"{accountId}",
 						"balance",
@@ -358,7 +372,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"transactionType\": \"withdrawal\",\n    \"accountId\": 2,\n    \"amount\": 5000,\n    \"toAccountNumber\": \"\",\n    \"transferMotive\": \"\"\n\n}",
+					"raw": "{\n    \"transactionType\": \"Valid Values: [withdrawal, deposit, transfer]\",\n    \"accountId\": 2,\n    \"amount\": 5000,\n    \"toAccountNumber\": \"[OPTIONAL] if it is tranfer enter the account_number eg CUS.13567 to which you wish to send the money\",\n    \"transferMotive\": \"[OPTIONAL] if it is tranfer eg For nothing\"\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -366,12 +380,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/transaction/initiate",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cust/transaction/initiate",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cust",
 						"transaction",
 						"initiate"
 					]
@@ -390,7 +406,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjA3ODMzLCJleHAiOjE2NzA2MTE0MzMsIm5iZiI6MTY3MDYwNzgzMywianRpIjoiSTBRaTJGcVhZV0xKb0FKcyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.huUpT3P-FQGqavofASnKZRvmF7oCXYk3MQfcZvaiP1g",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjc1NTY5LCJleHAiOjE2NzA2NzkxNjksIm5iZiI6MTY3MDY3NTU2OSwianRpIjoidjVWcVl0SVdmdkZaUUpuZyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.78v7EpTODOww0PSwFbmyaaRW4XFttMZh80yW3DLQ_S0",
 							"type": "string"
 						}
 					]
@@ -413,12 +429,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/account/transfers",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cust/account/transfers",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cust",
 						"account",
 						"transfers"
 					]
@@ -427,7 +445,7 @@
 			"response": []
 		},
 		{
-			"name": "Admin_Cachier: GetAccountTransfers",
+			"name": "GetAccountTransfers",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -437,7 +455,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjA4MDQzLCJleHAiOjE2NzA2MTE2NDMsIm5iZiI6MTY3MDYwODA0MywianRpIjoiQnBHTHdLeHFNUDB1eEVKNiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.FxNOMxohXXOopISoRawez5TqSLsX1gds5PJrO_Ir0QM",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjcwNjc1NjI3LCJleHAiOjE2NzA2NzkyMjcsIm5iZiI6MTY3MDY3NTYyNywianRpIjoiRk1iOVZ2ZGxRQnV4NDA0dSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.isuJDI_UuWxJ3JikD4ozcuVsB2xJtpi937UrBRjLcL4",
 							"type": "string"
 						}
 					]
@@ -460,12 +478,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{LOCAL_BASE_URL}}/api/account/{accountId}/transfers",
+					"raw": "{{LOCAL_BASE_URL}}/api/secure/cachr/account/{accountId}/transfers",
 					"host": [
 						"{{LOCAL_BASE_URL}}"
 					],
 					"path": [
 						"api",
+						"secure",
+						"cachr",
 						"account",
 						"{accountId}",
 						"transfers"

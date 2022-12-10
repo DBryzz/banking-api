@@ -91,6 +91,13 @@ class AuthController extends Controller
 
 
         if (array_key_exists('role', $data) && $data['role'] === User::ROLE_CACHIER) {
+            $authUser = Auth::user();
+            $user = User::findOrFail($authUser->getAuthIdentifier());
+            if ($user->role !== "admin")
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You are not allowed to assign roles',
+                ], 401);
             $payload['role'] = User::ROLE_CACHIER;
         }
 

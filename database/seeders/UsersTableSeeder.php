@@ -52,5 +52,15 @@ class UsersTableSeeder extends Seeder
             'created_at' => '2022-12-06 15:54:48',
             'updated_at' => '2022-12-06 15:54:48'
         ]);
+
+        DB::table('users')->insert([
+            'id' => 4,
+            'name' => 'Domou4 Brice4',
+            'email' => 'dbryzz.dev+4@gmail.com',
+            'password' => '$2y$10$aDnjdIx7reLQTE54Nb4ywO09gqXalDIPUKotKEIZ04ypt/ok8IrI.',
+            'role' => 'customer',
+            'created_at' => '2022-12-07 15:54:48',
+            'updated_at' => '2022-12-07 15:54:48'
+        ]);
     }
 }
