@@ -51,3 +51,26 @@ Route::middleware(['auth.apikey', 'auth.role:admin,cachier'])->group(function ()
 Route::middleware(['auth.apikey', 'auth.role:admin'])->group(function () {
     Route::patch('secure/admin/account/status-change', [AccountController::class, 'changeAccountStatus'])->name('change-account-status');
 });
+
+
+
+/**
+ * Routes For Testing - Without Middleware 
+ */
+Route::prefix('test')->group(function () {
+    Route::post('login', [AuthController::class, 'login'])->name('test-login');
+    Route::post('secure/cust/logout', [AuthController::class, 'logout'])->name('test-logout');
+    Route::post('secure/cust/refresh', [AuthController::class, 'refresh'])->name('test-refresh-token');
+    Route::post('secure/cust/account/create', [AccountController::class, 'create'])->name('test-create-account');
+    Route::get('secure/cust/account/balance/get', [AccountController::class, 'getMyBalance'])->name('test-get-my-balance');
+    Route::get('secure/cust/account/transfers', [TransactionController::class, 'getMyTransfers'])->name('test-get-my-transfers');
+
+    Route::post('secure/cust/transaction/initiate', [TransactionController::class, 'makeTransaction'])->name('test-make-transaction');
+
+    Route::post('secure/cachr/register', [AuthController::class, 'register'])->name('register');
+
+    Route::get('secure/cachr/account/{id}/balance/get', [AccountController::class, 'retrieveBalance'])->name('test-get-account-balance');
+    Route::get('secure/cachr/account/{id}/transfers', [TransactionController::class, 'getTransfers'])->name('test-get-account-transfers');
+
+    Route::patch('secure/admin/account/status-change', [AccountController::class, 'changeAccountStatus'])->name('test-change-account-status');
+});
