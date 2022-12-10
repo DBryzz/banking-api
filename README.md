@@ -4,13 +4,16 @@
 
 It is a small api that simulates the basic operations of a banking system. It has role base authentication implemented with JWT.
 
+       Database Design: /database-design.png
+
 ## 2 - Tools
 
--   Laravel 9
--   MySQL
--   Postman
--   Git
--   Github
+-   Umbrello - Database Design
+-   Laravel 9 - PHP Framework
+-   MySQL - DBMS
+-   Postman - API testing and documentation
+-   Git - Versioning
+-   Github - Hosting
 
 ## 3 - Deploying Locally
 
@@ -52,6 +55,6 @@ Checkout the api documentation in.
 
 ## 6 - Hosting
 
-Repository: https://github.com/DBryzz/banking-api/
+**Repository:** https://github.com/DBryzz/banking-api/
 
-Hosting Link: https://dbryzz.github.io/banking-api/
+**Hosting Link:** https://dbryzz.github.io/banking-api/
